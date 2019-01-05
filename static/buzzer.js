@@ -53,7 +53,7 @@ serverButton.addEventListener ("click", function(){
   console.log('has click');
   if (isPlayer){
     socket.emit('newServer', playerNum);
-    body.removeChild(button);
+    //body.removeChild(button);
 
     isPlayer = false;
     message.innerHTML = "Buzzers are ready";
