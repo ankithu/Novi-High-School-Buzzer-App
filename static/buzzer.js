@@ -18,19 +18,18 @@ socket.emit('new player');
 
 
 var button = document.getElementById("button");
-button.innerHTML = "Buzz";
+
 
 var serverButton = document.getElementById("createServer");
 
 // // 2. Append somewhere
 var body = document.getElementsByTagName("body")[0];
-body.appendChild(button);
+
 
 var message = document.getElementById("message");
 message.innerHTML = "BUZZ WHEN YOU ARE READY";
 
-
-body.appendChild(message);
+body.style.background = "yellow";
 var socket = io.connect();
 var serverForm = document.getElementById("serverF");
 var playerForm = document.getElementById("playerF");
