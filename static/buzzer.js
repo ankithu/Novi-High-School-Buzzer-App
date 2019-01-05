@@ -6,8 +6,8 @@ console.log("code is running");
 var buzzerHasBeenPressed = false;
 var buzzer = false;
 var isPlayer = true;
-const greenGrad = "linear-gradient(90deg, rgba(30,66,24,1) 0%, rgba(84,171,27,1) 37%, rgba(183,255,0,1) 100%)";
-const redGrad = "linear-gradient(90deg, rgba(60,28,28,1) 0%, rgba(171,45,27,1) 37%, rgba(255,79,0,1) 100%)";
+const greenGrad = "linear-gradient(90deg, rgba(41,103,17,1) 0%, rgba(0,255,6,1) 100%)";
+const redGrad = "linear-gradient(90deg, rgba(168,14,14,1) 0%, rgba(255,124,56,1) 100%)";
 const waitingGrad = "linear-gradient(90deg, rgba(249,240,0,1) 4%, rgba(0,230,255,1) 95%)";
 var playerNum = -1;
 document.addEventListener('keydown', function(event) {
