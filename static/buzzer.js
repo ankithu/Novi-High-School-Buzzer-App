@@ -50,6 +50,7 @@ button.addEventListener ("click", function() {
 
 
 serverButton.addEventListener ("click", function(){
+  console.log('has click');
   if (isPlayer){
     socket.emit('newServer', playerNum);
     body.removeChild(button);
