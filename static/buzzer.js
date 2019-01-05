@@ -6,6 +6,9 @@ console.log("code is running");
 var buzzerHasBeenPressed = false;
 var buzzer = false;
 var isPlayer = true;
+const greenGrad = "linear-gradient(90deg, rgba(30,66,24,1) 0%, rgba(84,171,27,1) 37%, rgba(183,255,0,1) 100%)";
+const redGrad = "linear-gradient(90deg, rgba(60,28,28,1) 0%, rgba(171,45,27,1) 37%, rgba(255,79,0,1) 100%)";
+const waitingGrad = "linear-gradient(90deg, rgba(249,240,0,1) 4%, rgba(0,230,255,1) 95%)";
 var playerNum = -1;
 document.addEventListener('keydown', function(event) {
   switch (event.keyCode) {
@@ -31,7 +34,7 @@ var message = document.getElementById("message");
 console.log(message);
 message.innerHTML = "BUZZ WHEN YOU ARE READY";
 
-body.style.background = "yellow";
+body.style.background = waitingGrad;
 var socket = io.connect();
 var serverForm = document.getElementById("serverF");
 var playerForm = document.getElementById("playerF");
@@ -66,7 +69,7 @@ serverButton.addEventListener ("click", function(){
   }
   else{
     socket.emit('resetBuzzers', serverForm.value);
-    body.style.background = "yellow";
+    body.style.background = waitingGrad ;
   }
 
 });
@@ -81,7 +84,7 @@ socket.on('resetBuzzers', function(name){
   console.log(serverForm.value);
   if (name == serverForm.value){
     buzzerHasBeenPressed = false;
-    body.style.background = "yellow";
+    body.style.background = waitingGrad;
     if (isPlayer){
       message.innerHTML = "BUZZ WHEN YOU ARE READY";
     }
@@ -102,19 +105,19 @@ socket.on('buzzersStates', function(states){
   if (serverForm.value == states.split(':')[0]){
     if (isPlayer){
       if(userID == states.split(':')[1]){
-        body.style.background = "green";
+        body.style.background = greenGrad;
         message.innerHTML = "Buzzed!";
         buzzerHasBeenPressed = true;
       }
       else{
         buzzerHasBeenPressed = true;
-        body.style.backgroundColor = "red";
+        body.style.backgroundColor = redGrad;
         message.innerHTML = "Someone else buzzed";
       }
     }
     else{
       message.innerHTML = states.split(':')[1] + " buzzed";
-      body.style.background = "green";
+      body.style.background = greenGrad;
     }
 
     buzzerHasBeenPressed = true;
