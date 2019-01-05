@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="theme.css" type="text/css">
+  <link rel="stylesheet" href="static/theme.css" type="text/css">
 </head>
 
 <body>
@@ -24,9 +24,9 @@
         <div class="col-md-12">
           <form class="form-inline">
             <div class="form-group">
-              <input type="email" class="form-control" id="inputmailinline" placeholder="User Name"> </div>
+              <input type="email" class="form-control" id="playerF" placeholder="User Name"> </div>
             <div class="form-group">
-              <input type="password" class="form-control mx-2" id="inputpasswordinline" placeholder="Server Name"> </div>
+              <input type="password" class="form-control mx-2" id="serverF" placeholder="Server Name"> </div>
             <button type="submit" class="btn btn-primary ">Connect</button>
           </form>
         </div>
@@ -36,7 +36,7 @@
   <div class="py-2">
     <div class="container">
       <div class="row">
-        <div class="col-md-12 h-25 pb-0" style=""><a class="btn btn-lg w-50 btn-danger text-white text-center h-50 text-capitalize shadow" href="#" style="">BUZZ</a></div>
+        <div class="col-md-12 h-25 pb-0" style=""><a class="btn btn-lg w-50 btn-danger text-white text-center h-50 text-capitalize shadow" href="#" style="" id="button">BUZZ</a></div>
       </div>
     </div>
   </div>
@@ -52,7 +52,7 @@
   <div class="py-5">
     <div class="container">
       <div class="row">
-        <div class="col-md-12"><a class="btn btn-primary" href="#">Create New Server</a></div>
+        <div class="col-md-12"><a class="btn btn-primary" href="#" id="createServer">Create New Server</a></div>
       </div>
     </div>
   </div>
