@@ -53,6 +53,7 @@ serverButton.addEventListener ("click", function(){
   if (isPlayer){
     socket.emit('newServer', playerNum);
     body.removeChild(button);
+    body.removeChild(playerForm);
     isPlayer = false;
     message.innerHTML = "Buzzers are ready";
     serverButton.innerHTML = "Reset Buzzers";
