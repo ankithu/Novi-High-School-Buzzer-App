@@ -19,6 +19,7 @@ socket.emit('new player');
 
 var button = document.getElementById("button");
 var header = document.getElementById("head");
+print(header);
 
 var serverButton = document.getElementById("createServer");
 
@@ -27,6 +28,7 @@ var body = document.getElementsByTagName("body")[0];
 
 
 var message = document.getElementById("message");
+print(message);
 message.innerHTML = "BUZZ WHEN YOU ARE READY";
 
 body.style.background = "yellow";
