@@ -111,7 +111,7 @@ socket.on('buzzersStates', function(states){
       }
       else{
         buzzerHasBeenPressed = true;
-        body.style.backgroundColor =  "red";//"linear-gradient(90deg, rgba(168,14,14,1) 0%, rgba(255,124,56,1) 100%)";
+        body.style.background =  "linear-gradient(90deg, rgba(168,14,14,1) 0%, rgba(255,124,56,1) 100%)";
         message.innerHTML = "Someone else buzzed";
       }
     }
