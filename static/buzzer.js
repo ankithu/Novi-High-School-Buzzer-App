@@ -33,11 +33,16 @@ message.innerHTML = "BUZZ WHEN YOU ARE READY";
 body.appendChild(message);
 var socket = io.connect();
 var serverForm = document.getElementById("serverF");
-
+var playerForm = document.getElementById("playerF");
+var userID = playerNum;
 // 3. Add event handler
 button.addEventListener ("click", function() {
   if (!buzzerHasBeenPressed){
-      buzzer = serverForm.value + ":" + playerNum;
+
+      if (playerForm.value != ""){
+        userID = playerForm.value;
+      }
+      buzzer = serverForm.value + ":" + userID;
       socket.emit('buzzer', buzzer);
   }
 });
@@ -89,7 +94,7 @@ socket.on('buzzersStates', function(states){
   console.log(states.split(':')[1]);
   if (serverForm.value == states.split(':')[0]){
     if (isPlayer){
-      if(playerNum == states.split(':')[1]){
+      if(userID == states.split(':')[1]){
         body.style.background = "green";
         message.innerHTML = "Buzzed!";
         buzzerHasBeenPressed = true;
