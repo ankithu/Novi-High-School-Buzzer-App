@@ -18,7 +18,7 @@ socket.emit('new player');
 
 
 var button = document.getElementById("button");
-
+var header = document.getElementById("head");
 
 var serverButton = document.getElementById("createServer");
 
@@ -58,6 +58,8 @@ serverButton.addEventListener ("click", function(){
     isPlayer = false;
     message.innerHTML = "Buzzers are ready";
     serverButton.innerHTML = "Reset Buzzers";
+    header.innerHTML = "Room Host";
+    
   }
   else{
     socket.emit('resetBuzzers', serverForm.value);
