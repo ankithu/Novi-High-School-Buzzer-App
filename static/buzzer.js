@@ -2,7 +2,7 @@ var socket = io();
 socket.on('message', function(data) {
   console.log(data);
 });
-
+console.log("code is running");
 var buzzerHasBeenPressed = false;
 var buzzer = false;
 var isPlayer = true;
@@ -44,6 +44,7 @@ button.addEventListener ("click", function() {
       }
       buzzer = serverForm.value + ":" + userID;
       socket.emit('buzzer', buzzer);
+      console.log('code has sent something')
   }
 });
 
