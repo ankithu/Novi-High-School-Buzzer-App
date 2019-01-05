@@ -16,7 +16,7 @@ app.use('/static', express.static(__dirname + '/static'));
 
 // Routing
 app.get('/', function(request, response) {
-  response.sendFile(path.join(__dirname, 'index.html'));
+  response.sendFile(path.join(__dirname, 'page.html'));
 });
 const port=process.env.PORT || 3000
 server.listen(port,() => {
