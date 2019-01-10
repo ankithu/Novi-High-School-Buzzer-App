@@ -9,6 +9,7 @@ var server = http.Server(app);
 var io = socketIO(server);
 var playerIDDict = {};
 var serverIDDict = {};
+var serverStatusDict = {};
 var serverNum = 1000;
 var currentPlayerAssignment = 0;
 app.set('port', 5000);
@@ -45,14 +46,22 @@ io.on('connection', function(socket) {
     serverId = buzz.split(':')[0];
     console.log('has buzz from' + buzz);
     console.log(buzz);
+    serverStatusDict[serverID] = "buzz";
     io.sockets.emit('buzzersStates', buzz);
   });
   socket.on('newServer', function(playerID){
     serverIDDict[serverNum] = playerID;
   });
+  socket.on('logServer', function(serverName){
+    serverStatusDict[serverName] = "reset";
+  })
   socket.on('resetBuzzers', function(serverName){
     console.log(serverName);
+    serverStatusDict[serverName] = "reset";
     io.sockets.emit('resetBuzzers', serverName);
+  });
+  socket.on('serverDataRequest', function(serverName){
+    io.sockets.emit('serverDataResponse', (serverName+ ':' + serverStatusDict[serverName]));
   });
 
 });

@@ -22,6 +22,7 @@ socket.emit('new player');
 
 var button = document.getElementById("button");
 var header = document.getElementById("head");
+var connectButton = document.getElementById("connectButton");
 console.log(header);
 
 var serverButton = document.getElementById("createServer");
@@ -39,6 +40,7 @@ var socket = io.connect();
 var serverForm = document.getElementById("serverF");
 var playerForm = document.getElementById("playerF");
 var userID = playerNum;
+var waitingForStatus = false;
 // 3. Add event handler
 button.addEventListener ("click", function() {
   if (!buzzerHasBeenPressed){
@@ -48,16 +50,23 @@ button.addEventListener ("click", function() {
       }
       buzzer = serverForm.value + ":" + userID;
       socket.emit('buzzer', buzzer);
-      console.log('code has sent something')
+      console.log('code has sent something');s
   }
 });
 
-
+connectButton.addEventListener ("click", function(){
+  console.log('connect button action');
+  if (isPlayer){
+    socket.emit('serverDataRequest', serverForm.value);
+    waitingForStatus = true;
+  }
+});
 
 serverButton.addEventListener ("click", function(){
   console.log('has click');
   if (isPlayer){
     socket.emit('newServer', playerNum);
+    socket.emit('logServer', serverForm.value);
     //body.removeChild(button);
 
     isPlayer = false;
@@ -77,6 +86,14 @@ serverButton.addEventListener ("click", function(){
 socket.on('assignment', function(num){
   if (playerNum < 0){
     playerNum = num;
+  }
+});
+socket.on('serverDataResponse', function(status){
+  if (status.split(':')[0]==serverForm.value && waitingForStatus){
+    if (status.split(':')[1]=="buzz"){
+      someoneElseBuzzed();
+    }
+    waitingForStatus = false;
   }
 });
 socket.on('resetBuzzers', function(name){
@@ -110,9 +127,7 @@ socket.on('buzzersStates', function(states){
         buzzerHasBeenPressed = true;
       }
       else{
-        buzzerHasBeenPressed = true;
-        body.style.background =  "linear-gradient(90deg, rgba(168,14,14,1) 0%, rgba(255,124,56,1) 100%)";
-        message.innerHTML = "Someone else buzzed";
+        someoneElseBuzzed();
       }
     }
     else{
@@ -125,3 +140,8 @@ socket.on('buzzersStates', function(states){
   }
 
 });
+function someoneElseBuzzed(){
+  buzzerHasBeenPressed = true;
+  body.style.background =  "linear-gradient(90deg, rgba(168,14,14,1) 0%, rgba(255,124,56,1) 100%)";
+  message.innerHTML = "Someone else buzzed";
+}
