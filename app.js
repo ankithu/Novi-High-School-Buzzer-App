@@ -46,7 +46,7 @@ io.on('connection', function(socket) {
     serverId = buzz.split(':')[0];
     console.log('has buzz from' + buzz);
     console.log(buzz);
-    serverStatusDict[serverID] = "buzz";
+    serverStatusDict[serverId] = "buzz";
     io.sockets.emit('buzzersStates', buzz);
   });
   socket.on('newServer', function(playerID){
