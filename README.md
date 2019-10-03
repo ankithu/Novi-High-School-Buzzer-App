@@ -1,1 +1,2 @@
 # Novi-High-School-Buzzer-App
+Buzzer web applciation for Novi High School quiz bowl team. To use, go to noviquizbowlbuzzer.herokuapp.com then enter your name, room id, and hit connect. To host a room, enter the desired room id, and click start server. To indicate that you know the answer to a question, hit buzz. The room host will then get a notification that a buzz was registered and will be able to see who won the buzzer race. As a player, you will be able to see if somebody else buzzed before you did.
